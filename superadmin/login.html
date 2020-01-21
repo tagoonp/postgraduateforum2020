@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>myMailer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <!-- Material Design Bootstrap -->
+    <link href="../node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
+    <!-- Preload -->
+    <!-- <link rel="../stylesheet" href="node_modules/preload.js/dist/css/preload.css"> -->
+    <link href="../node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
+  </head>
+
+  <style media="screen">
+    body{
+      background-color: rgb(0, 119, 228);
+    }
+
+    .custom-1{
+      /* background: #1976d2; */
+      background: #bed6ed;
+      border: solid;
+      /* border-radius: 0px; */
+      border-width: 0px 0px 2px 0px;
+      border-color: rgb(217, 217, 217);
+      color: #616161 !important;
+    }
+
+    .custom-1::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #1976d2;
+        opacity: .6; /* Firefox */
+    }
+
+    .custom-1::placeholder:focus { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #8c9cab;
+        opacity: .6; /* Firefox */
+    }
+
+    .custom-1:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: red;
+    }
+
+    .custom-1::-ms-input-placeholder { /* Microsoft Edge */
+        color: red;
+    }
+
+    .custom-1:focus{
+      background: rgb(0, 119, 228) ;
+      /* background: rgb(0, 119, 228); */
+      outline: none;
+      color: #fff !important;
+    }
+  </style>
+  <body>
+
+    <!--Main layout-->
+    <main>
+      <div class="container pl-20 pr-20" id="login">
+        <div class="row h-100 justify-content-center align-items-center">
+          <div class="col-md-6 col-sm-10">
+            <div class="text-center pb-20">
+              <i class="fa fa-envelope fa-5x text-white"></i>
+            </div>
+            <h1 class="text-center text-white mb-0" style="font-size: 3em;"><span style="color: rgb(255, 230, 0)">WisniorWeb</span>.KIT</h1>
+            <div id="notifyDiv" class="dn mt-20 pd-20 text-center text-white th_font" style="background: rgba(157, 157, 157, 0.52);">
+              Please enter e-mail address and password
+            </div>
+
+            <div id="loadDiv" class="dn text-center" style="padding: 40px;">
+              <i class="fas fa-spinner fa-spin fa-3x text-white"></i>
+            </div>
+            <form class="mt-20" id="loginForm" autocomplete="off" onsubmit="return false;">
+              <div class="form-group">
+                <input type="text" class="form-control custom-1 text-center th_font" id="txtUsername" placeholder="E-mail address" autofocus>
+              </div>
+              <div class="form-group mt-20">
+                <input type="password" class="form-control custom-1 text-center th_font" id="txtPassword" placeholder="Password">
+              </div>
+              <div class="form-group mt-20">
+                <!-- <button class="btn btn-block btn-blue btn-lg th_font" style="font-size: 1.3em; box-shadow: none; border: solid; border-width: 1px; border-color: #fff;" type="submit">ล๊อคอิน</button> -->
+                <button class="btn btn-block btn-pink btn-lg th_font" style="font-size: 1.3em; " type="submit">Log in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer>
+
+    </footer>
+    <!--Footer-->
+
+
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js" ></script>
+    <script type="text/javascript" src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../assets/core/js/config.1.0.js"></script>
+    <script type="text/javascript" src="../assets/core/js/wisnior.1.0.js"></script>
+
+    <!-- Page specific script -->
+    <script type="text/javascript" src="../assets/core/page/js/authen-login.js"></script>
+
+    <script type="text/javascript">
+      $height = $(document).height();
+      $login_height = $('#login').height();
+
+      $(document).ready(function(){
+        $('#login').css('margin-top', (($height/2) - ($login_height/2)) + 'px')
+      })
+
+      $(function(){
+        $('#loginForm').submit(function(){
+          check = 0
+          $('.form-control').removeClass('is-invalid')
+          $('#notifyDiv').text('Please enter e-mail address and password')
+          $('#notifyDiv').addClass('dn')
+
+          if($('#txtUsername').val() == ''){
+            check++
+            $('#txtUsername').addClass('is-invalid')
+          }
+
+          if($('#txtPassword').val() == ''){
+            check++
+            $('#txtPassword').addClass('is-invalid')
+          }
+
+          if(check != 0){
+            $('#notifyDiv').removeClass('dn')
+            return false;
+          }
+
+          $('#notifyDiv').addClass('dn')
+          $('#loginForm').addClass('dn')
+          $('#loadDiv').removeClass('dn')
+
+          authen.login()
+
+        })
+      })
+    </script>
+  </body>
+</html>

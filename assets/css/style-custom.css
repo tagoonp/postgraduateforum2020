@@ -1,0 +1,41 @@
+html, body{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 300 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: rgb(240, 239, 239);
+}
+
+.custom-link-1{
+    color: #0ba376;
+    text-decoration: none !important;
+}
+
+.custom-link-1:hover{
+    color: #067d5a;
+    text-decoration: none !important;
+}
+
+.custom-link-2{
+    color: #000;
+    text-decoration: none !important;
+}
+
+.custom-link-2:hover{
+    color: #343635;
+    text-decoration: none !important;
+}
+
+.custom-input{
+    border: none;
+    background: #f5f5f5;
+}
+
+.nav-link{ color: #fff !important;}
+.nav-link:hover{ color: #00cd71 !important;}
+.navbar-brand:hover{ color: #00cd71 !important;}
+
+.bsdn{ box-shadow: none;}
+
+.btn-custom-white:hover{ background-color: transparent !important; color: #058b83;}
+.btn-custom-danger:hover{ background-color: transparent !important; color: #ff0800;}

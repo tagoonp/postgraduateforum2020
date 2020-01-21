@@ -1,0 +1,16 @@
+html, body{
+    font-family: 'Kanit', sans-serif !important;
+    font-weight: 300 !important;
+}
+.th{
+    font-family: 'Kanit', sans-serif !important;
+    font-weight: 300 !important;
+}
+
+.th-b{
+    font-weight: 400;
+}
+
+#mobile-nav-toggle{
+    top: 10px;
+}
