@@ -191,8 +191,9 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                               </div>
 
                               <div class="form-group">
-                                <label for="">Keywards : <span class="text-danger">*</span> </label>
+                                <label for="">Keywords : <span class="text-danger">*</span> </label>
                                 <input type="text" name="txtKeyword" id="txtKeyword" value="" class="form-control">
+                                <small>Each keyword seperate by comma. <strong>Example</strong>: keyword1, keyword2, keyword3</small>
                               </div>
 
                               <div class="form-group">
@@ -300,6 +301,12 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
           $('.form-control').blur(function(){
             submission.savedraft()
           })
+
+          $('.abstractForm').submit(function(){
+            submission.savedraft(1)
+          })
+
+
 
           $('.authorForm').submit(function(){
             let check = 0

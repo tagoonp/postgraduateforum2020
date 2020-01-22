@@ -1,5 +1,6 @@
 var submission = {
-  savedraft(){
+  savedraft(checkStage){
+
     if($('#txtTitle').val() == ''){
       return ;
     }
