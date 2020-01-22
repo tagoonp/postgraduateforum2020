@@ -155,6 +155,22 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
                         </div>
 
                         <div class="form-group">
+                          <label for="" class="text-muted- fs09 fw500" style="font-size: 0.8em;">Country : <span class="text-danger">**</span></label>
+                          <select class="form-control" name="txtCountry" id="txtCountry">
+                            <option value="">-- Choose country --</option>
+                            <?php
+                            $strSQL = "SELECT * FROM udix2_countries WHERE 1 ORDER BY country_name";
+                            $resultCountry = mysqli_query($conn, $strSQL);
+                            if($resultCountry){
+                              while($row = mysqli_fetch_array($resultCountry)){
+                                echo '<option value="'.$row['country_name'].'">'.$row['country_name'].'</option>';
+                              }
+                            }
+                            ?>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
                           <label for="" class="text-muted fs09 fw500" style="font-size: 0.8em;">Phone number : <span class="text-danger">**</span></label>
                           <input type="text"  class="form-control" id="txtPhone">
                         </div>
@@ -182,6 +198,13 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
                              - Author is the first name in article<br>
                              - Presenter is the person who come and present on behalf of the main author.
                            </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input mr-3" type="checkbox" id="txtCheckbox1" value="1">
+                            <label class="form-check-label" for="inlineCheckbox1"  style="font-size: 0.8em;">Would you like  to join sightseeing at Songkhla province on 14th July afternoon?<br><span class="text-danger">* free of charge</span></label>
+                          </div>
                         </div>
 
                         <div class="form-group">
@@ -226,9 +249,9 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
   <script type="text/javascript" src="./node_modules/preload.js/dist/js/preload.js"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="./template/js/main.js"></script>
-  <script src="./assets/js/config.js"></script>
-  <script src="./assets/js/core.js"></script>
+  <script src="./template/js/main.js?token=<?php echo $sysdateu; ?>"></script>
+  <script src="./assets/js/config.js?token=<?php echo $sysdateu; ?>"></script>
+  <script src="./assets/js/core.js?token=<?php echo $sysdateu; ?>"></script>
 
   <script type="text/javascript">
     $(document).ready(function(){
@@ -260,12 +283,16 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
         preload.show()
         var jxr = $.post(wc_config.api + 'authenication?stage=login', param, function(){}, 'json')
                    .always(function(snap){
-                     console.log(snap);
                      if(fnc.json_exist(snap)){
                        snap.forEach(i=>{
-                         window.localStorage.setItem(wc_config.prefix + 'uid', i.uid)
-                         window.localStorage.setItem(wc_config.prefix + 'role', i.role)
-                         window.location = './' + i.role + '?uid=' + i.uid
+                         if(i.status == 'Fail'){
+                           preload.hide()
+                           swal("Error", "Invalid e-mail address or password!", "error")
+                         }else{
+                           window.localStorage.setItem(wc_config.prefix + 'uid', i.uid)
+                           window.localStorage.setItem(wc_config.prefix + 'role', i.role)
+                           window.location = './' + i.role + '?uid=' + i.uid
+                         }
                        })
                      }else{
                        preload.hide()
@@ -285,9 +312,15 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
         if($('#txtEmail').val() == ''){ check++; $('#txtEmail').addClass('is-invalid')}
         if($('#txtPassword1').val() == ''){ check++; $('#txtPassword1').addClass('is-invalid')}
         if($('#txtRegtype').val() == ''){ check++; $('#txtRegtype').addClass('is-invalid')}
+        if($('#txtCountry').val() == ''){ check++; $('#txtCountry').addClass('is-invalid')}
         if($('#txtPosition').val() == 'Other'){
           if($('#txtPosition_o').val() == ''){ check++; $('#txtPosition_o').addClass('is-invalid')}
         }
+        $sightseeing = 0;
+        if($('#txtCheckbox1').is(":checked")){
+          $sightseeing = 1;
+        }
+
         if(check != 0){ return ;}
         preload.show()
         var sec_key = fnc.randomString(12)
@@ -301,7 +334,9 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
           email: $('#txtEmail').val(),
           password: $('#txtPassword1').val(),
           regtype: $('#txtRegtype').val(),
-          sec: sec_key
+          country: $('#txtCountry').val(),
+          sec: sec_key,
+          sightseeing: $sightseeing
         }
         var jxr = $.post(wc_config.api + 'authenication?stage=create', param, function(){})
                    .always(function(resp){

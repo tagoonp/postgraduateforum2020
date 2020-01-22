@@ -26,6 +26,23 @@ var authen = {
                      $('#textPhone').html(i.phone)
                      $('#textRegas').html(i.register_type)
                      $('#textEmail').html(i.username)
+                     $('#textCountry').html(i.country)
+
+                     $('#txtPosition').val(i.academic_title)
+                     if(i.academic_title == 'Other'){
+                       $('.position_o').removeClass('dn')
+                       $('#txtPosition_o').val(i.academic_title_o)
+                     }
+                     $('#txtPrefix').val(i.prefix)
+                     $('#txtFullname').val(i.fullname)
+                     $('#txtInstitution').val(i.institution)
+                     $('#txtPhone').val(i.phone)
+                     $('#txtRegtype').val(i.register_type)
+                     $('#txtEmail').val(i.username)
+                     if(i.sightseeing == 1){
+                       $('#txtCheckbox1').attr('checked', true)
+                       $('#textSightseeing').html('<i class="fas fa-check"></i> Yes')
+                     }
                    })
                    if(hl){ preload.hide() }
                  }else{

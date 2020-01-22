@@ -8,10 +8,10 @@ $db_prefix = TB_PREFIX;
 $conn = mysqli_connect($host, $user, $password, $dbname);
 if(!$conn){
   echo "Can not connect database";
-  echo $host."<br>";
-  echo $user."<br>";
-  echo $password."<br>";
-  echo $dbname."<br>";
+  // echo $host."<br>";
+  // echo $user."<br>";
+  // echo $password."<br>";
+  // echo $dbname."<br>";
   die();
 }
 

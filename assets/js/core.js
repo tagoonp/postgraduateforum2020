@@ -35,12 +35,12 @@ var fnc = {
 
                                 }
                                 swal({
-                                    title: "ดำเนินการสำเร็จ",
+                                    title: "Success",
                                     text: successText,
                                     type: "success",
                                     showCancelButton: false,
                                     confirmButtonColor: "#126cd5",
-                                    confirmButtonText: "ตกลง",
+                                    confirmButtonText: "OK",
                                     closeOnConfirm: true
                                 },
                                 function(){
@@ -62,12 +62,12 @@ var fnc = {
 
                             }
                             swal({
-                                title: "คำเตือน",
+                                title: "Warning",
                                 text: failText,
                                 type: "warning",
                                 showCancelButton: false,
                                 confirmButtonColor: "#126cd5",
-                                confirmButtonText: "ตกลง",
+                                confirmButtonText: "OK",
                                 closeOnConfirm: true
                             },
                             function(){

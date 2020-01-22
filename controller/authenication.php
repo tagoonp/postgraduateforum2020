@@ -88,6 +88,68 @@ if($stage == 'login'){
   die();
 }
 
+if($stage == 'updateinfo'){
+
+  if(
+    (!isset($_POST['position'])) ||
+    (!isset($_POST['prefix'])) ||
+    (!isset($_POST['fullname'])) ||
+    (!isset($_POST['institution'])) ||
+    (!isset($_POST['phone'])) ||
+    (!isset($_POST['email'])) ||
+    (!isset($_POST['regtype'])) ||
+    (!isset($_POST['sightseeing'])) ||
+    (!isset($_POST['country'])) ||
+    (!isset($_POST['uid']))
+  ){
+    mysqli_close($conn);
+    die();
+  }
+
+  $position = mysqli_real_escape_string($conn, $_POST['position']);
+  $position_o = mysqli_real_escape_string($conn, $_POST['position_o']);
+  $prefix = mysqli_real_escape_string($conn, $_POST['prefix']);
+  $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+  $institution = mysqli_real_escape_string($conn, $_POST['institution']);
+  $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+  $email = mysqli_real_escape_string($conn, $_POST['email']);
+  $regtype = mysqli_real_escape_string($conn, $_POST['regtype']);
+  $sightseeing = mysqli_real_escape_string($conn, $_POST['sightseeing']);
+  $country = mysqli_real_escape_string($conn, $_POST['country']);
+  $uid = mysqli_real_escape_string($conn, $_POST['uid']);
+
+  $strSQL = "SELECT * FROM udix2_account WHERE username = '$email' AND UID = '$uid' AND delete_status = 'N' AND activate_status = 'Y'";
+  $result = mysqli_query($conn, $strSQL);
+  if(($result) && (mysqli_num_rows($result) > 0)){
+    $strSQL = "UPDATE udix2_account
+               SET
+               academic_title = '$position',
+               academic_title_o = '$position_o',
+               prefix = '$prefix',
+               fullname = '$fullname',
+               institution = '$institution',
+               phone = '$phone',
+               register_type = '$regtype',
+               sightseeing = '$sightseeing',
+               country = '$country'
+               WHERE
+               username = '$email' AND UID = '$uid' AND delete_status = 'N' AND activate_status = 'Y'
+              ";
+      $resultUpdate = mysqli_query($conn, $strSQL);
+      if($resultUpdate){
+        echo "Y";
+
+        $strSQL = "INSERT INTO udix2_log (log_datetime, log_ip, log_info, log_uid) VALUES ('$sysdatetime', '$ip', 'Update profile information', '$uid')";
+        mysqli_query($conn, $strSQL);
+      }else{
+        echo "N";
+      }
+  }
+
+  mysqli_close($conn);
+  die();
+
+}
 if($stage == 'create'){
 
   if(
@@ -99,7 +161,9 @@ if($stage == 'create'){
     (!isset($_POST['email'])) ||
     (!isset($_POST['password'])) ||
     (!isset($_POST['sec'])) ||
-    (!isset($_POST['regtype']))
+    (!isset($_POST['regtype'])) ||
+    (!isset($_POST['country'])) ||
+    (!isset($_POST['sightseeing']))
   ){
     mysqli_close($conn);
     die();
@@ -114,7 +178,9 @@ if($stage == 'create'){
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $password = base64_encode(mysqli_real_escape_string($conn, $_POST['password']));
   $regtype = mysqli_real_escape_string($conn, $_POST['regtype']);
+  $country = mysqli_real_escape_string($conn, $_POST['country']);
   $sec = mysqli_real_escape_string($conn, $_POST['sec']);
+  $sightseeing = mysqli_real_escape_string($conn, $_POST['sightseeing']);
 
   $strSQL = "SELECT * FROM udix2_account WHERE username = '$email' AND delete_status = 'N' AND activate_status = 'Y'";
   $result = mysqli_query($conn, $strSQL);
@@ -130,13 +196,13 @@ if($stage == 'create'){
               (
                 UID, username, password, academic_title, academic_title_o,
                 prefix, fullname, institution, phone, register_type,
-                reg_datetime, secret_id
+                reg_datetime, secret_id, sightseeing, country
               )
              VALUES
               (
                 '$uid', '$email', '$password', '$position', '$position_o',
                 '$prefix', '$fullname', '$institution', '$phone', '$regtype',
-                '$sysdatetime', '$sec'
+                '$sysdatetime', '$sec', '$sightseeing', '$country'
               )";
   $resultInsert = mysqli_query($conn, $strSQL);
 
