@@ -304,9 +304,16 @@ Gadjah Mada University, Indonesia
               <tr>
                 <td>•	Utilization of national data for monitoring UHC in Thailand</td>
                 <td>
-                  <strong>Prof. Tippawan Liabsuetrakul</strong><br>
-Epidemiology Unit, Faculty of Medicine,
-Prince of Songkla University, Thailand
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <img src="./template/img/Tippawan.png" alt="" style="width: 70%;">
+                    </div>
+                    <div class="col-8 pt-2">
+                      <strong>Prof. Tippawan Liabsuetrakul</strong><br>
+                      Epidemiology Unit, Faculty of Medicine,
+                      Prince of Songkla University, Thailand
+                    </div>
+                  </div>
                 </td>
               </tr>
               <tr style="background: rgb(232, 232, 232);">
@@ -322,11 +329,17 @@ Centre for Health Equity Monitoring Foundation, Phitsanulok Thailand
               <tr>
                 <td>•	Preparation of UHC for epidemiological and dempgraphic transition</td>
                 <td>
-                  <strong>Dr. Rintatr Mori</strong><br>
-Regional Adviser for Population Aging and Scustainable Development, UNFPA Asia-Pacific Region
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <img src="./template/img/Mori.png" alt="" style="width: 70%;">
+                    </div>
+                    <div class="col-8 pt-1">
+                      <strong>Dr. Rintatr Mori</strong><br>
+                      Regional Adviser for Population Aging and Scustainable Development, UNFPA Asia-Pacific Region
+                    </div>
+                  </div>
                 </td>
               </tr>
-
               <tr style="background: rgb(232, 232, 232);">
                 <td colspan="2"><strong>Plenary session 3: Role of policy makers and academia for UHC</strong></td>
               </tr>
