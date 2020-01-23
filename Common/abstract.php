@@ -175,7 +175,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                                     <tr style="background: rgb(235, 235, 235);">
                                       <th  style="width: 50px;">No.</th>
                                       <th>Author/Co-author's name</th>
-                                      <th style="width: 100px;">Presenter?</th>
+                                      <th style="width: 100px;" class="pl-0">Presenter?</th>
                                       <th style="width: 250px;"></th>
                                     </tr>
                                   </thead>
@@ -294,13 +294,13 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
               }
           })
 
-          $('#txtTitle').blur(function(){
-            submission.savedraft()
-          })
+          // $('.form-control').blur(function(){
+          //   submission.savedraft()
+          // })
 
-          $('.form-control').blur(function(){
+          setTimeout(function(){
             submission.savedraft()
-          })
+          }, 3000)
 
           $('.abstractForm').submit(function(){
             submission.savedraft(1)

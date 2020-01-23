@@ -102,7 +102,16 @@ if($stage == 'save_draft'){
   $category = mysqli_real_escape_string($conn, $_POST['category']);
 
   if($pid == NULL){
-    $pid = base64_encode($sysdateu).substr($uid, 4);
+
+    $ord = 1;
+    $strSQL = "SELECT MAX(PID) mx FROM udix2_submission WHERE sub_use_status = 'Y'";
+    $resultOrd = mysqli_query($conn, $strSQL);
+    if(($resultOrd) && (mysqli_num_rows($resultOrd) > 0)){
+      $dataOrd = mysqli_fetch_assoc($resultOrd);
+      $ord = $dataOrd['mx'] + 1;
+    }
+
+    $pid = $ord;
     $strSQL = "INSERT INTO udix2_submission
               (PID, sub_title, sub_presenttype, sub_abstract, sub_keywords, sub_category, sub_udatetime, sub_uid)
               VALUES
@@ -119,17 +128,19 @@ if($stage == 'save_draft'){
     }
   }
   else{
-    $strSQL = "UPDATE udix2_submission SET sub_use_status = 'N' WHERE PID = '$pid' AND sub_uid = '$uid'";
-    $resultUpdate = mysqli_query($conn, $strSQL);
-    $strSQL = "INSERT INTO udix2_submission
-              (PID, sub_title, sub_presenttype, sub_abstract, sub_keywords, sub_category, sub_udatetime, sub_uid)
-              VALUES
-              (
-                '$pid', '$title', '$type', '$abstract', '$keyword', '$category', '$sysdatetime', '$uid'
-              )
+    $strSQL = "UPDATE udix2_submission
+               SET
+                sub_title = '$title',
+                sub_presenttype = '$type',
+                sub_abstract = '$abstract',
+                sub_keywords = '$keyword',
+                sub_category = '$category',
+                sub_udatetime = '$sysdatetime'
+              WHERE
+                PID = '$pid' AND sub_uid = '$uid'
               ";
-    $resultInsert = mysqli_query($conn, $strSQL);
-    if($resultInsert){
+    $resultUpdate = mysqli_query($conn, $strSQL);
+    if($resultUpdate){
       $return[0]['pid'] = $pid;
       $return[0]['status'] = 'Success';
     }else{

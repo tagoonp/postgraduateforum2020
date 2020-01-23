@@ -1,41 +1,119 @@
+var presenter_author = 0
 var submission = {
   savedraft(checkStage){
+    if(checkStage == 1){ // With notify
+      $check = 0
+      $('.form-control').removeClass('is-invalid')
 
-    if($('#txtTitle').val() == ''){
-      return ;
-    }
+      if($('#txtTitle').val() == ''){
+        $('#txtTitle').addClass('is-invalid')
+        $check++
+      }
 
-    var abst = abstract.getData();
+      if($('#txtType').val() == ''){
+        $('#txtType').addClass('is-invalid')
+        $check++
+      }
 
-    $type = $('#txtType').val()
-    if($type == ''){
-      $type = 'NA'
-    }
+      if($('#txtKeyword').val() == ''){
+        $('#txtKeyword').addClass('is-invalid')
+        $check++
+      }
 
-    $cat = $('#txtCategory').val()
-    if($cat == ''){
-      $cat = 'NA'
+      if($('#txtCategory').val() == ''){
+        $('#txtCategory').addClass('is-invalid')
+        $check++
+      }
+
+      if($check != 0){
+        return ;
+      }
+
+      if(presenter_author == 0){
+         swal("Warning", "Please select presenter from your author list", "warning")
+         return ;
+      }
+
+      var abst = abstract.getData();
+
+      $type = $('#txtType').val()
+      if($type == ''){
+        $type = 'NA'
+      }
+
+      $cat = $('#txtCategory').val()
+      if($cat == ''){
+        $cat = 'NA'
+      }
+      var param = {
+        pid: current_project,
+        uid: current_user,
+        title: $('#txtTitle').val(),
+        type: $type,
+        abstract: abst,
+        keyword: $('#txtKeyword').val(),
+        category: $cat
+      }
+      preload.show()
+      var jxr = $.post(wc_config.api + 'submission?stage=save_draft', param, function(){}, 'json')
+                 .always(function(snap){
+                   if(fnc.json_exist(snap)){
+                     snap.forEach(i=>{
+                       if(i.status == 'Success'){
+                         current_project = i.pid
+                         window.localStorage.setItem(wc_config.prefix + 'pid', i.pid)
+                         window.location = 'submission_review?uid=' + current_user + '&pid=' + current_project
+                       }else{
+                         preload.hide()
+                         swal("Error", "Can not submit your abstract, please contact system administrator", "error")
+                       }
+                     })
+                   }
+                   else{
+                     preload.hide()
+                     swal("Error", "Can not submit your abstract, please contact system administrator", "error")
+                   }
+                 })
+
+
+    }else{
+      if($('#txtTitle').val() == ''){
+        return ;
+      }
+
+      var abst = abstract.getData();
+
+      $type = $('#txtType').val()
+      if($type == ''){
+        $type = 'NA'
+      }
+
+      $cat = $('#txtCategory').val()
+      if($cat == ''){
+        $cat = 'NA'
+      }
+      var param = {
+        pid: current_project,
+        uid: current_user,
+        title: $('#txtTitle').val(),
+        type: $type,
+        abstract: abst,
+        keyword: $('#txtKeyword').val(),
+        category: $cat
+      }
+      var jxr = $.post(wc_config.api + 'submission?stage=save_draft', param, function(){}, 'json')
+                 .always(function(snap){
+                   console.log(snap);
+                   if(fnc.json_exist(snap)){
+                     snap.forEach(i=>{
+                       if(i.status == 'Success'){
+                         current_project = i.pid
+                         window.localStorage.setItem(wc_config.prefix + 'pid', i.pid)
+                       }
+                     })
+                   }
+                 })
     }
-    var param = {
-      pid: current_project,
-      uid: current_user,
-      title: $('#txtTitle').val(),
-      type: $type,
-      abstract: abst,
-      keyword: $('#txtKeyword').val(),
-      category: $cat
-    }
-    var jxr = $.post(wc_config.api + 'submission?stage=save_draft', param, function(){}, 'json')
-               .always(function(snap){
-                 if(fnc.json_exist(snap)){
-                   snap.forEach(i=>{
-                     if(i.status == 'Success'){
-                       current_project = i.pid
-                       window.localStorage.setItem(wc_config.prefix + 'pid', i.pid)
-                     }
-                   })
-                 }
-               })
   },
   list_author(){
     if(current_project != null){
@@ -50,21 +128,21 @@ var submission = {
                      $c = 1;
                      snap.forEach(i=>{
 
-                       $btn = '<button class="btn btn-icon" onclick="setAuthorUpdate(\'' + i.ID + '\')"><i class="fas fa-pencil-alt"></i></button>' +
-                              '<button class="btn btn-icon"><i class="fas fa-chevron-up"></i></button>' +
-                              '<button class="btn btn-icon"><i class="fas fa-chevron-down"></i></button>' +
-                              '<button class="btn btn-icon text-danger" onclick="deleteAuthor(\'' + i.ID + '\')"><i class="fas fa-trash"></i></button>'
+                       $btn = '<button class="btn btn-icon" onclick="setAuthorUpdate(\'' + i.ID + '\')" type="button"><i class="fas fa-pencil-alt"></i></button>' +
+                              // '<button class="btn btn-icon"><i class="fas fa-chevron-up"></i></button>' +
+                              // '<button class="btn btn-icon"><i class="fas fa-chevron-down"></i></button>' +
+                              '<button class="btn btn-icon text-danger" onclick="deleteAuthor(\'' + i.ID + '\')" type="button"><i class="fas fa-trash"></i></button>'
 
                        if($c == 1){
-                         $btn = '<button class="btn btn-icon" onclick="setAuthorUpdate(\'' + i.ID + '\')"><i class="fas fa-pencil-alt"></i></button>' +
-                                '<button class="btn btn-icon text-muted" disabled><i class="fas fa-chevron-up"></i></button>' +
-                                '<button class="btn btn-icon"><i class="fas fa-chevron-down"></i></button>' +
-                                '<button class="btn btn-icon text-danger" onclick="deleteAuthor(\'' + i.ID + '\')"><i class="fas fa-trash"></i></button>'
+                         $btn = '<button class="btn btn-icon" onclick="setAuthorUpdate(\'' + i.ID + '\')" type="button"><i class="fas fa-pencil-alt"></i></button>' +
+                                // '<button class="btn btn-icon text-muted" disabled><i class="fas fa-chevron-up"></i></button>' +
+                                // '<button class="btn btn-icon"><i class="fas fa-chevron-down"></i></button>' +
+                                '<button class="btn btn-icon text-danger" onclick="deleteAuthor(\'' + i.ID + '\')" type="button"><i class="fas fa-trash"></i></button>'
                        }else if($c == snap.length){
-                         $btn = '<button class="btn btn-icon" onclick="setAuthorUpdate(\'' + i.ID + '\')"><i class="fas fa-pencil-alt"></i></button>' +
-                                '<button class="btn btn-icon"><i class="fas fa-chevron-up"></i></button>' +
-                                '<button class="btn btn-icon text-muted" disabled><i class="fas fa-chevron-down"></i></button>' +
-                                '<button class="btn btn-icon text-danger" onclick="deleteAuthor(\'' + i.ID + '\')"><i class="fas fa-trash"></i></button>'
+                         $btn = '<button class="btn btn-icon" onclick="setAuthorUpdate(\'' + i.ID + '\')" type="button"><i class="fas fa-pencil-alt"></i></button>' +
+                                // '<button class="btn btn-icon"><i class="fas fa-chevron-up"></i></button>' +
+                                // '<button class="btn btn-icon text-muted" disabled><i class="fas fa-chevron-down"></i></button>' +
+                                '<button class="btn btn-icon text-danger" onclick="deleteAuthor(\'' + i.ID + '\')" type="button"><i class="fas fa-trash"></i></button>'
                        }
 
                        $presenter = '<label class="custom-switch mt-2 pl-0">' +
@@ -77,6 +155,7 @@ var submission = {
                            '<input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" checked>' +
                            '<span class="custom-switch-indicator"></span>' +
                          '</label>'
+                         presenter_author++
                        }
 
                        $('#tableAuthor').append('<tr>' +

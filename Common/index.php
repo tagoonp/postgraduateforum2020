@@ -228,7 +228,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                             }else{
                               ?>
                               <tr>
-                                <td colspan="4" class="text-center">No submisstion found.<?php echo $strSQL;?></td>
+                                <td colspan="4" class="text-center">No submisstion found.<?php //echo $strSQL;?></td>
                               </tr>
                               <?php
                             }
@@ -272,6 +272,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
               return ;
             }
             authen.get_current_user(true)
+            window.localStorage.removeItem(wc_config.prefix + 'pid')
         })
 
         $(function(){
