@@ -16,12 +16,12 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
   <meta charset="utf-8">
   <title>Postgraduateforum 2020</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="<?php //echo get_configuration($conn, 'keywords', $language, $domain); ?>" name="keywords">
-  <meta content="<?php //echo get_configuration($conn, 'description', $language, $domain); ?>" name="description">
+  <meta content="Postgraduateforum, Postgraduateforum 2020, Postgraduateforum2020, PFG2020, Health Systems and Policy, Conference" name="keywords">
+  <meta content="“Ensuring healthy lives and promoting well-being for all at all ages” is one of the 17 UN Sustainable Development Goals, to be achieved by 2030. The essential components of these goals need to be prioritized so that all countries can integrate them into their health systems and policies. Achieving universal health coverage and providing safe and high-quality healthcare using appropriate evidence-based technology are common challenges for all health systems. The core components of a well-established health system are infrastructure, human resources, finance and well-organized and properly-managed facilities. In order to achieve an efficient and cost-effective health system, the World Health Organization recommends four indicators for monitoring health systems: (1) provision of healthcare services; (2) investment in equipment, facilities, and the training of health personnel; (3) health finance, and; (4) monitoring and evaluation. The measurable outcomes of this monitoring process are the people’s state of health, equity of access to healthcare, health system responsiveness, the responsibility of people on their health, and the financial burden across socioeconomic gradients. Data and research on the progress and achievement of universal health coverage around the world are crucial to health policy makers and researchers in order to monitor the situations of each country and explore the interventions to introduce in multi-stakeholder platforms. Therefore, “Research in the Era of Universal Health Coverage” will be the theme for the 14th Postgraduate Forum on Health Systems and Policies in 2020." name="description">
 
   <!-- Favicons -->
-  <link href="./template/img/favicon.png" rel="icon">
-  <link href="./template/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- <link href="./template/img/favicon.png" rel="icon">
+  <link href="./template/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
   <!-- Google Fonts -->
   <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet"> -->
@@ -334,7 +334,7 @@ Centre for Health Equity Monitoring Foundation, Phitsanulok Thailand
                       <img src="./template/img/Mori.png" alt="" style="width: 70%;">
                     </div>
                     <div class="col-8 pt-1">
-                      <strong>Dr. Rintatr Mori</strong><br>
+                      <strong>Dr. Rintato Mori</strong><br>
                       Regional Adviser for Population Aging and Scustainable Development, UNFPA Asia-Pacific Region
                     </div>
                   </div>

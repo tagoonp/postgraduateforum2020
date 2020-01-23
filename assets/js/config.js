@@ -5,3 +5,4 @@ var wc_config = {
   // domain: 'https://postgraduateforum2020.com/',
   // api: 'https://postgraduateforum2020.com/controller/'
 }
+  

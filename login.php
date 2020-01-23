@@ -203,7 +203,7 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
                         <div class="form-group">
                           <div class="form-check form-check-inline">
                             <input class="form-check-input mr-3" type="checkbox" id="txtCheckbox1" value="1">
-                            <label class="form-check-label" for="inlineCheckbox1"  style="font-size: 0.8em;">Would you like  to join sightseeing at Songkhla province on 14th July afternoon?<br><span class="text-danger">* free of charge</span></label>
+                            <label class="form-check-label" for="inlineCheckbox1"  style="font-size: 0.8em;">Would you like  to join sightseeing at Songkhla province on 14th July afternoon?<br><span class="text-danger">(Optional)</span></label>
                           </div>
                         </div>
 
