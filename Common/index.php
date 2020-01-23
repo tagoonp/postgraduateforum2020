@@ -37,7 +37,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light" style="background: #3e5965; margin: 0px; left: 0px; right: 0px;">
-            <a class="navbar-brand" href="./">PGF<span style="color: rgb(17, 226, 100);">2020</span></a>
+            <a class="navbar-brand" href="./?uid=<?php echo $uid;?>">PGF<span style="color: rgb(17, 226, 100);">2020</span></a>
             <button class="navbar-toggler dn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -128,7 +128,17 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                   <div class="col-12">
                       <button type="button" class="btn btn-success text-dark- bsdn" onclick="window.location='./?uid=<?php echo $uid;?>'"><i class="fas fa-home"></i></button>
                       <button type="button" class="btn btn-secondary text-dark bsdn" onclick="window.location='./profile?uid=<?php echo $uid;?>'"><i class="far fa-user"></i> Profile</button>
-                      <button type="button" class="unSubmittion_componants btn btn-primary float-right bsdn" onclick="window.location='abstract?uid=<?php echo $uid; ?>'"><i class="fas fa-upload"></i> Submit abstract</button>
+
+                      <?php
+                      $strSQL = "SELECT * FROM udix2_submission WHERE sub_uid = '$uid' AND sub_use_status = 'Y' AND sub_submit_status NOT IN ('Withdraw')";
+                      $resultAbstract = mysqli_query($conn, $strSQL);
+                      if(($resultAbstract) && (mysqli_num_rows($resultAbstract) < 2)){
+                          ?>
+                          <button type="button" class="unSubmittion_componants btn btn-primary float-right bsdn" onclick="window.location='abstract?uid=<?php echo $uid; ?>'"><i class="fas fa-upload"></i> Submit abstract</button>
+                          <?php
+                      }
+                      ?>
+
                   </div>
                 </div>
 
@@ -164,6 +174,11 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                 <!-- .row -->
 
                 <div class="row mt-3">
+                  <div class="col-12">
+                    <div class="alert alert-secondary text-dark" role="alert">
+                      You can submit maximum 2 abstract.
+                    </div>
+                  </div>
                   <div class="col-sm-12">
                     <strong>Submission record </strong>
                     <div class="card">
@@ -174,7 +189,6 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                               <th class="text-white " style="width: 50px;">#</th>
                               <th class="text-white " style="">Title</th>
                               <th class="text-white " style="width: 150px;">Status</th>
-                              <th class="text-white text-right" style="width: 200px;"></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -189,7 +203,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                                 <tr>
                                   <td class="pt-2 pb-2" style="vertical-align: top;"><?php echo $c;?></td>
                                   <td class="pt-2 pb-2" style="vertical-align: top;">
-                                    <a href="Javascript:setSubmissionInfo('<?php echo $row['PID'];?>')" class="text-success"><?php echo $row['sub_title'];?></a>
+                                    <a href="Javascript:setSubmissionInfo2('<?php echo $row['PID'];?>')" class="text-success"><?php echo $row['sub_title'];?></a>
                                     <div class="">
                                       <?php
                                       $strSQL = "SELECT author_fullname, author_presenter FROM udix2_author WHERE author_pid = '".$row['PID']."' AND author_uid = '$uid'";
@@ -209,17 +223,43 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                                       }
                                       ?>
                                     </div>
+
+                                    <div class="pt-2">
+                                      <?php
+                                      if($row['sub_submit_status'] == 'Withdraw'){
+
+                                      }else{
+                                        if($row['sub_draft'] == 'Y'){
+                                          ?>
+                                          <button type="button" class="btn btn-icon" onclick="setSubmissionInfo('<?php echo $row['PID'];?>')"><i class="fas fa-pencil-alt"></i> Edit</button>
+                                          <?php
+                                        }else{
+                                          ?>
+                                          <button type="button" class="btn btn-icon" onclick="" disabled><i class="fas fa-pencil-alt"></i> Edit</button>
+                                          <?php
+                                        }
+                                      }
+
+                                      ?>
+
+                                      <?php
+                                      if($row['sub_submit_status'] != 'Withdraw'){
+                                        ?>
+                                        <button type="button" class="btn btn-icon text-danger" onclick="WithdrawSubmittion('<?php echo $row['PID'];?>', '<?php echo $row['sub_title']; ?>')"><i class="fas fa-trash"></i> Withdraw</button>
+                                        <?php
+                                      }
+                                      ?>
+
+                                    </div>
                                   </td>
                                   <td class="pt-2 pb-2" style="vertical-align: top;">
                                     <?php
                                     if($row['sub_draft'] == 'Y'){
                                       echo "Draft";
+                                    }else{
+                                      echo $row['sub_submit_status'];
                                     }
                                     ?>
-                                  </td>
-                                  <td class="text-right" style="padding-top: 0px !important;">
-                                    <button type="button" class="btn btn-icon" onclick="setSubmissionInfo('<?php echo $row['PID'];?>')"><i class="fas fa-pencil-alt"></i></button>
-                                    <button type="button" class="btn btn-icon text-danger"><i class="fas fa-trash"></i></button>
                                   </td>
                                 </tr>
                                 <?php
@@ -228,7 +268,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                             }else{
                               ?>
                               <tr>
-                                <td colspan="4" class="text-center">No submisstion found.<?php //echo $strSQL;?></td>
+                                <td colspan="3" class="text-center">No submisstion found.<?php //echo $strSQL;?></td>
                               </tr>
                               <?php
                             }
@@ -276,7 +316,46 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
         })
 
         $(function(){
+          $('.withDrawForm').submit(function(){
+            $('.form-control').removeClass('is-invalid')
+            if($('#txtReason').val() == ''){
+              $('#txtReason').addClass('is-invalid')
+              return ;
+            }
 
+            swal({    title: "Are you sure?",
+              text: "You will not be able to recover this record after withdraw!",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, confirm!",
+              cancelButtonText: "Cancel",
+              closeOnConfirm: true },
+              function(){
+
+                var param = {
+                  uid: current_user,
+                  pid: $('#txtPid').val(),
+                  reason: $('#txtReason').val()
+                }
+
+                preload.show()
+                var jxr = $.post(wc_config.api + 'submission?stage=withdraw', param, function(){})
+                           .always(function(resp){
+                             if(resp == 'Y'){
+                               setTimeout(function(){ window.location.reload() }, 2000)
+                             }else{
+                               setTimeout(function(){
+                                 preload.hide()
+                                 swal("Error", "Can not withdraw or delete this record, please contact system administrator", "error")
+                               }, 1000)
+                             }
+                           })
+              });
+
+
+
+          })
         })
 
         function closeModal(){
@@ -284,13 +363,59 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
             $('#btnResetPWD').trigger('click')
         }
 
+        function setSubmissionInfo2(id){
+          current_project = id
+          window.localStorage.setItem(wc_config.prefix + 'pid', id)
+          window.location = 'abstract_review?uid=' + current_user + '&pid=' + id
+        }
+
         function setSubmissionInfo(id){
           current_project = id
           window.localStorage.setItem(wc_config.prefix + 'pid', id)
           window.location = 'abstract?uid=' + current_user
         }
+
+        function WithdrawSubmittion(id, title){
+          $('#txtPid').val(id)
+          $('#txtTitle').val(title)
+          $('#withDrawModal').modal()
+        }
     </script>
 </html>
+
+<!-- Modal -->
+<div class="modal fade" id="withDrawModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Withdraw/Delete submission</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="withDrawForm" onsubmit="return false;">
+        <div class="modal-body">
+          <div class="form-group dn">
+            <label for="">Abstract ID : <span class="text-danger">*</span> </label>
+            <input type="text" name="txtPid" id="txtPid" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="">Abstract title : <span class="text-danger">*</span> </label>
+            <textarea name="txtTitle" id="txtTitle" class="form-control" rows="8" cols="80" readonly></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Explain you withdraw or delete reason : <span class="text-danger">*</span> </label>
+            <textarea name="txtReason" id="txtReason" class="form-control" rows="8" cols="80"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary-" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary bsdn">Withdraw</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="indicatorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

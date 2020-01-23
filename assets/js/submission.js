@@ -115,7 +115,7 @@ var submission = {
                  })
     }
   },
-  list_author(){
+  list_author(hl){
     if(current_project != null){
       var param = {
         pid: current_project,
@@ -173,14 +173,15 @@ var submission = {
                                                 '</tr>')
                        $c++
                      })
-                     preload.hide()
+                     if(hl){ preload.hide() }
                    }else{
                      $('#tableAuthor').html('<tr><td colspan="4" class="text-center">No author / co-author found</td></tr>')
+                     if(hl){ preload.hide() }
                    }
                  })
     }
   },
-  get_lasted_submission(){
+  get_lasted_submission(hl){
     if(current_project != null){
       var param = {
         pid: current_project,
@@ -204,11 +205,18 @@ var submission = {
                        }else{
                          $('#txtCategory').val(i.sub_category)
                        }
-                       abstract.setData(i.sub_abstract)
+                       setTimeout(function(){
+                         abstract.setData(i.sub_abstract)
+                         if(hl){ preload.hide() }
+                       }, 1000)
 
                      })
+                   }else{
+                     if(hl){ preload.hide() }
                    }
                  })
+    }else{
+      if(hl){ preload.hide() }
     }
   }
 }
@@ -267,7 +275,7 @@ function switchPresenter(id){
   var jxr = $.post(wc_config.api + 'submission?stage=switch_author', param, function(){})
              .always(function(resp){
                if(resp == 'Y'){
-                 submission.list_author()
+                 submission.list_author(true)
                }else{
                  preload.hide()
                  swal("Error!", "Can not update presenter status", "error")
@@ -294,7 +302,7 @@ function deleteAuthor(id){
                 var jxr = $.post(wc_config.api + 'submission?stage=delete_author', param, function(){})
                            .always(function(resp){
                              if(resp == 'Y'){
-                               submission.list_author()
+                               submission.list_author(true)
                              }else{
                                preload.hide()
                                swal("Error!", "Can not delete author info.", "error")

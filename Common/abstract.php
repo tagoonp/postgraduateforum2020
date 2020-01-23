@@ -37,7 +37,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light" style="background: #3e5965; margin: 0px; left: 0px; right: 0px;">
-            <a class="navbar-brand" href="./">PGF<span style="color: rgb(17, 226, 100);">2020</span></a>
+            <a class="navbar-brand" href="./?uid=<?php echo $uid;?>">PGF<span style="color: rgb(17, 226, 100);">2020</span></a>
             <button class="navbar-toggler dn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -187,6 +187,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
 
                               <div class="form-group">
                                 <label for="">Abstract : <span class="text-danger">*</span> </label>
+                                <a href="#" class="float-right text-success"  data-toggle="modal" data-target="#instructionModal">- Click here for instruction -</a>
                                 <textarea name="txtAbstract" id="txtAbstract" rows="8" cols="80" class="form-control"></textarea>
                               </div>
 
@@ -279,8 +280,8 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
             authen.logout()
             return ;
           }
-          authen.get_current_user(true)
-          submission.get_lasted_submission()
+          authen.get_current_user()
+          submission.get_lasted_submission(true)
           submission.list_author()
         })
 
@@ -294,13 +295,14 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
               }
           })
 
-          // $('.form-control').blur(function(){
-          //   submission.savedraft()
-          // })
-
-          setTimeout(function(){
+          setInterval(function(){
             submission.savedraft()
           }, 3000)
+
+
+          $('#txtTitle').blur(function(){
+            submission.savedraft()
+          })
 
           $('.abstractForm').submit(function(){
             submission.savedraft(1)
@@ -611,6 +613,26 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
             <button type="submit" class="btn btn-success bsdn">Update</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Abstrct instruction</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li><strong>Title:</strong> The manuscript title should be as succinct as possible. Titles should generally not include abbreviations, and not be longer than 60 characters (including spaces).</li>
+          <li><strong>Abstract:</strong> The abstracts of original articles or systematic reviews must have a structured abstract that states  the purpose, basic procedures, main findings and principal conclusions of the study. Divide the abstract with the headings Objective, Material and Methods, Results, and Conclusion. Case reports or review articles should have an unstructured abstract.</li>
+        </ul>
       </div>
     </div>
   </div>

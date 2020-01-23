@@ -18,6 +18,10 @@ $resultSubmistion = mysqli_query($conn, $strSQL);
 $dataSubmission = '';
 if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
   $dataSubmission = mysqli_fetch_assoc($resultSubmistion);
+  if($dataSubmission['sub_submit_status'] == 'Draft'){
+    header('Location: ./abstract?uid='.$uid);
+    die();
+  }
 }else{
   header('Location: ../');
   die();
@@ -139,7 +143,6 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
                 <div class="row d-none d-sm-block">
                   <div class="col-12">
                       <button type="button" class="btn btn-secondary text-dark bsdn" onclick="window.location='./?uid=<?php echo $uid;?>'"><i class="fas fa-home"></i></button>
-                      <button type="button" class="btn btn-secondary text-dark bsdn" onclick="window.history.back()"><i class="fas fa-pencil-alt"></i> Back to edit</button>
                   </div>
                 </div>
 
@@ -160,7 +163,6 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
                       </div>
                       <div class="col-12 col-sm-4 text-right">
                         <button type="button" name="button" class="btn btn-success bsdn" onclick="printAsFile2()"><i class="fas fa-print"></i></button>
-                        <button type="button" name="button" class="btn btn-danger bsdn" onclick="comfirmSubmission()"><i class="fas fa-paper-plane"></i> Confirm and send to staff</button>
                       </div>
                     </div>
                     <div class="card mt-2">

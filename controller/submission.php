@@ -15,6 +15,74 @@ if(
 $return = array();
 $stage = mysqli_real_escape_string($conn, $_GET['stage']);
 
+if($stage == 'withdraw'){
+  if(
+    (!isset($_POST['uid'])) ||
+    (!isset($_POST['pid']))
+  ){
+    mysqli_close($conn);
+    die();
+  }
+
+  $uid = mysqli_real_escape_string($conn, $_POST['uid']);
+  $pid = mysqli_real_escape_string($conn, $_POST['pid']);
+  $reason = mysqli_real_escape_string($conn, $_POST['reason']);
+
+  $strSQL = "UPDATE udix2_submission
+             SET
+             sub_submit_status = 'Withdraw'
+             WHERE PID = '$pid' AND sub_uid = '$uid' AND sub_use_status = 'Y'";
+  $resultUpdate = mysqli_query($conn, $strSQL);
+  if($resultUpdate){
+    echo "Y";
+    $strSQL = "INSERT INTO udix2_log
+                (log_datetime, log_ip, log_info, log_msg, log_uid)
+               VALUES
+                ('$sysdatetime','$ip','Withdraw abstract ID $pid with reason : $reason','','$uid')
+              ";
+              mysqli_query($conn, $strSQL);
+  }
+  mysqli_close($conn);
+  die();
+}
+
+if($stage == 'confirm_draft'){
+  if(
+    (!isset($_POST['uid'])) ||
+    (!isset($_POST['pid']))
+  ){
+    mysqli_close($conn);
+    die();
+  }
+
+  $uid = mysqli_real_escape_string($conn, $_POST['uid']);
+  $pid = mysqli_real_escape_string($conn, $_POST['pid']);
+
+  $strSQL = "SELECT * FROM udix2_submission WHERE PID = '$pid' AND sub_uid = '$uid' AND sub_use_status = 'Y'";
+  $resultCheck = mysqli_query($conn, $strSQL);
+  if(($resultCheck) && (mysqli_num_rows($resultCheck) > 0)){
+    $strSQL = "UPDATE udix2_submission
+               SET
+               sub_submit = 'Y',
+               sub_draft = 'N',
+               sub_submit_status = 'Submitted' ,
+               sub_submit_datetime = '$sysdatetime'
+               WHERE PID = '$pid' AND sub_uid = '$uid' AND sub_use_status = 'Y'";
+    $resultUpdate = mysqli_query($conn, $strSQL);
+    if($resultUpdate){
+      echo "Y";
+      $strSQL = "INSERT INTO udix2_log
+                  (log_datetime, log_ip, log_info, log_msg, log_uid)
+                 VALUES
+                  ('$sysdatetime','$ip','Submit abstract ID $pid','','$uid')
+                ";
+                mysqli_query($conn, $strSQL);
+    }
+  }
+  mysqli_close($conn);
+  die();
+}
+
 if($stage == 'info'){
   if(
     (!isset($_POST['uid'])) ||

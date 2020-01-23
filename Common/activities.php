@@ -38,7 +38,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light" style="background: #3e5965; margin: 0px; left: 0px; right: 0px;">
-            <a class="navbar-brand" href="./">PGF<span style="color: rgb(17, 226, 100);">2020</span></a>
+            <a class="navbar-brand" href="./?uid=<?php echo $uid;?>">PGF<span style="color: rgb(17, 226, 100);">2020</span></a>
             <button class="navbar-toggler dn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
