@@ -269,6 +269,11 @@ University</p>
                   Moving from evidence to policy: opportunities in the era of universal health coverage (UHC)
                 </td>
                 <td>
+                  <div class="row">
+                    <div class="col-6 col-sm-4">
+                      <img src="./template/img/Suwit.png" alt="" class="img-fluid">
+                    </div>
+                  </div>
                   <strong>Dr. Suwit Wibulpolprasert</strong><br>
                   International Health Policy Program Foundation and Health Intervention and Technology Assessment Foundation, Thailand
                 </td>
