@@ -270,12 +270,15 @@ University</p>
                 </td>
                 <td>
                   <div class="row">
-                    <div class="col-6 col-sm-4">
-                      <img src="./template/img/Suwit.png" alt="" class="img-fluid">
+                    <div class="col-4 text-center">
+                      <img src="./template/img/Suwit.png" alt="" style="width: 70%;">
+                    </div>
+                    <div class="col-8 pt-2">
+                      <strong>Dr. Suwit Wibulpolprasert</strong><br>
+                      International Health Policy Program Foundation and Health Intervention and Technology Assessment Foundation, Thailand
                     </div>
                   </div>
-                  <strong>Dr. Suwit Wibulpolprasert</strong><br>
-                  International Health Policy Program Foundation and Health Intervention and Technology Assessment Foundation, Thailand
+
                 </td>
               </tr>
               <tr style="background: rgb(232, 232, 232);">
