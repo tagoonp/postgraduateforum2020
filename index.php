@@ -322,7 +322,7 @@ Gadjah Mada University, Indonesia
               <tr>
                 <td>•	Research needs for monitoring UHC advancement</td>
                 <td>
-                  <strong>Prof. Supasit Panurothai</strong><br>
+                  <strong>Prof. Supasit Pannarunothai</strong><br>
 Centre for Health Equity Monitoring Foundation, Phitsanulok Thailand
                 </td>
               </tr>
@@ -334,8 +334,8 @@ Centre for Health Equity Monitoring Foundation, Phitsanulok Thailand
                       <img src="./template/img/Mori.png" alt="" style="width: 70%;">
                     </div>
                     <div class="col-8 pt-1">
-                      <strong>Dr. Rintato Mori</strong><br>
-                      Regional Adviser for Population Aging and Scustainable Development, UNFPA Asia-Pacific Region
+                      <strong>Dr. Rintaro Mori</strong><br>
+                      Regional Adviser for Population Aging and Sustainable Development, UNFPA Asia-Pacific Region
                     </div>
                   </div>
                 </td>
@@ -448,6 +448,9 @@ please attach the scanned receipt in the registration system.
           </div>
         </div>
         <div class="row">
+          <div class="col-12 col-sm-4 col-md-3">
+            <img src="./template/img/poster_jhsmr.jpg" alt="" style="width: 100%;">
+          </div>
           <div class="col-12 col-sm-8 col-md-9">
             <h4>Abstract Submission Guidelines </h4>
             <p>
@@ -465,10 +468,16 @@ please attach the scanned receipt in the registration system.
     book.
             </p>
 
+            <h4>Presentations Guildline</h4>
+            <p class="mb-1">
+              <ul>
+                <li><a href="./template/img/Instruction_for_Oral_Presenters_2020.pdf" target="_blank">Instruction for Oral Presenters.</a></li>
+                <li><a href="./template/img/Instructions_for_Poster_Presenters_2020.pdf" target="_blank">Instruction for Poster Presenters.</a></li>
+              </ul>
+            </p>
+
           </div>
-          <div class="col-12 col-sm-4 col-md-3">
-            <img src="./template/img/poster_jhsmr.jpg" alt="" style="width: 100%;">
-          </div>
+
         </div>
 
       </div>

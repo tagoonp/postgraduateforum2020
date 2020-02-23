@@ -333,8 +333,11 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
                   uid: current_user,
                   pid: current_project
                 }
+                console.log(param);
                 var jxr = $.post(wc_config.api + 'submission?stage=confirm_draft', param, function(){})
                            .always(function(resp){
+                             console.log(wc_config.api);
+                             console.log(resp);
                              if(resp == 'Y'){
                                // Get all auther email
 

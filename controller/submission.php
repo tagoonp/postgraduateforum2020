@@ -51,9 +51,12 @@ if($stage == 'confirm_draft'){
     (!isset($_POST['uid'])) ||
     (!isset($_POST['pid']))
   ){
+    echo "a";
     mysqli_close($conn);
     die();
   }
+
+  echo $uid;
 
   $uid = mysqli_real_escape_string($conn, $_POST['uid']);
   $pid = mysqli_real_escape_string($conn, $_POST['pid']);
@@ -77,7 +80,11 @@ if($stage == 'confirm_draft'){
                   ('$sysdatetime','$ip','Submit abstract ID $pid','','$uid')
                 ";
                 mysqli_query($conn, $strSQL);
+    }else{
+      echo $strSQL;
     }
+  }else{
+    echo $strSQL;
   }
   mysqli_close($conn);
   die();
