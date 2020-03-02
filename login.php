@@ -340,6 +340,8 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
         }
         var jxr = $.post(wc_config.api + 'authenication?stage=create', param, function(){})
                    .always(function(resp){
+                     // console.log(resp);
+                     // return ;
                      if(resp == 'Y'){
                        var content = '<p><h4>Postgraduate Forum 2020 Account Information</h4></p>' +
                                      '<p>You created postgraduate forum 2020 account via this information as below<br>' +
@@ -359,7 +361,7 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
                            toname: $('#txtPrefix').val() + $('#txtFullname').val()
                        }
 
-                       fnc.send_email(param, 'redirect', '', 'ระบบได้ดำเนินการตามกระบวนที่ท่านได้ดำเนินการแล้ว แต่เกิดข้อผิดพลาดในส่วนของการส่งอีเมล์ กรุณาแจ้งเจ้าหน้าที่เพื่อตรวจสอบและดำเนินการแก้ไข', true, 'register_result?status=success')
+                       fnc.send_email(param, 'redirect', '', 'Registration success (with no email verification)', true, 'register_result?status=success')
 
                      }else{
                        preload.hide()

@@ -94,7 +94,31 @@ if(isset($_GET['status'])){
                       <div class="row">
                         <div class="col-12 col-sm-6 offset-sm-3">
                           <p class="text-center">
-                            Please check your e-mail address and verify your account by click activation link attached via e-mail content. If you can not get an e-mail please contact staff at bags.anyawadee@gmail.com
+                           <span class="text-danger">Please check your e-mail address (Inbox or Junk box) and verify your account</span> by click (or copy) activation link attached via e-mail content. If you can not get an e-mail please contact staff at bags.anyawadee@gmail.com
+                          </p>
+                        </div>
+                      </div>
+                      <form onsubmit="return false;">
+                        <div class="form-group text-center pt-4">
+                          <button type="button" class="btn btn-success" onclick="window.location = './login'">Back to Log in</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                  <?php
+                }else{
+                  ?>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="text-center pt-3">
+                        <i class="fa fa-check text-success" style="font-size: 4em;  "></i>
+                      </div>
+                      <h3 class="mb-3 mt-4 text-center text-success">Registration fail</h3>
+                      <div class="row">
+                        <div class="col-12 col-sm-6 offset-sm-3">
+                          <p class="text-center">
+                           Please try again or contact our staff at bags.anyawadee@gmail.com
                           </p>
                         </div>
                       </div>
