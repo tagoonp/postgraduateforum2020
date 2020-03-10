@@ -448,15 +448,15 @@ please attach the scanned receipt in the registration system.
           </div>
         </div>
         <div class="row">
-          <div class="col-12 col-sm-4 col-md-3">
+          <!-- <div class="col-12 col-sm-4 col-md-3">
             <img src="./template/img/poster_jhsmr.jpg" alt="" style="width: 100%;">
-          </div>
-          <div class="col-12 col-sm-8 col-md-9">
+          </div> -->
+          <div class="col-12">
             <h4>Abstract Submission Guidelines </h4>
             <p>
               Abstracts should report an original work that has not been previously published or presented in other
     conferences. All abstracts will be published in the supplementary issue of the Journal of Health
-    Science and Medical Research. <a href="https://www.jhsmr.org/index.php/jhsmr" target="_blank">https://www.jhsmr.org/index.php/jhsmr</a>
+    Science and Medical Research.
             </p>
 
             <h4>Presentations</h4>

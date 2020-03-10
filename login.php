@@ -355,8 +355,8 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
                        var param = {
                            title: 'Postgraduate Forum 2020 Account Information',
                            content: content,
-                           user: 'rmismedpsu@gmail.com',
-                           key: 'cm1pc21lZHBzdUBnbWFpbC5jb20yMDE5LTEwLTIyIDIxOjU4OjU3MTI0LjEyMi40Mi4yNDU=',
+                           user: 'epiunit.psu@gmail.com',
+                           key: 'ZXBpdW5pdC5wc3VAZ21haWwuY29tMjAyMC0wMS0yMyAxMTo0NzowMTIwMi4xMi43My4yNg==',
                            toemail: $('#txtEmail').val(),
                            toname: $('#txtPrefix').val() + $('#txtFullname').val()
                        }

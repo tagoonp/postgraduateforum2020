@@ -346,11 +346,20 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
                                              '<p>You have submit abstract title <strong>' + $('#textTitle').text() + '</strong> in The 14th Postgraduate Forum on Health Systems and Policy' +
                                              'Research in the Era of Universal Health Coverage. Our staff will progress and response as soon as posibile. Please always check your e-mail address for any staff contact.</p>' +
                                              '<p>Regards,<br>Postgraduate Forum 2020 Auto mailer system</p>'
+                               // var param = {
+                               //     title: 'PGF2020 Abstrct submission information',
+                               //     content: content,
+                               //     user: 'rmismedpsu@gmail.com',
+                               //     key: 'cm1pc21lZHBzdUBnbWFpbC5jb20yMDE5LTEwLTIyIDIxOjU4OjU3MTI0LjEyMi40Mi4yNDU=',
+                               //     toemail: $('#txtEmail').val(),
+                               //     toname: $('#txtPrefix').val() + $('#txtFullname').val()
+                               // }
+
                                var param = {
                                    title: 'PGF2020 Abstrct submission information',
                                    content: content,
-                                   user: 'rmismedpsu@gmail.com',
-                                   key: 'cm1pc21lZHBzdUBnbWFpbC5jb20yMDE5LTEwLTIyIDIxOjU4OjU3MTI0LjEyMi40Mi4yNDU=',
+                                   user: 'epiunit.psu@gmail.com',
+                                   key: 'ZXBpdW5pdC5wc3VAZ21haWwuY29tMjAyMC0wMS0yMyAxMTo0NzowMTIwMi4xMi43My4yNg==',
                                    toemail: $('#txtEmail').val(),
                                    toname: $('#txtPrefix').val() + $('#txtFullname').val()
                                }
@@ -358,7 +367,7 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
                                fnc.send_email(param, 'index?uid=' + current_user, 'Submission sending success (Status 1)', 'Submission sending success (Status 2)', true, '')
                              }else{
                                preload.hide()
-                               swal("Error", "Can not submit your abstract, please contact system administrator", "error")
+                               swal("Error", "Can not submit your abstract, please contact system administrator (2)" + resp , "error")
                              }
                            })
               });

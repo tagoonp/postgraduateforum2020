@@ -154,6 +154,11 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                           <div class="col-12">
                             <form onsubmit="return false;" class="abstractForm">
                               <div class="form-group">
+                                <label for="">UID : <span class="text-danger">*</span> </label>
+                                <input type="text" class="form-control" id="txtUid" id="txtUid" value="<?php echo $uid; ?>" readonly>
+                              </div>
+
+                              <div class="form-group">
                                 <label for="">Title : <span class="text-danger">*</span> </label>
                                 <textarea name="txtTitle" id="txtTitle" rows="8" cols="80" class="form-control"></textarea>
                               </div>

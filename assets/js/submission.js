@@ -65,13 +65,13 @@ var submission = {
                          window.location = 'submission_review?uid=' + current_user + '&pid=' + current_project
                        }else{
                          preload.hide()
-                         swal("Error", "Can not submit your abstract, please contact system administrator", "error")
+                         swal("Error", "Can not submit your abstract, please contact system administrator (1) " + JSON.stringify(snap), "error")
                        }
                      })
                    }
                    else{
                      preload.hide()
-                     swal("Error", "Can not submit your abstract, please contact system administrator", "error")
+                     swal("Error", "Can not submit your abstract, please contact system administrator (2) " + JSON.stringify(snap), "error")
                    }
                  })
 
