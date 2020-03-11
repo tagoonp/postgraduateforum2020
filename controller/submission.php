@@ -34,7 +34,8 @@ if($stage == 'withdraw'){
              WHERE PID = '$pid' AND sub_uid = '$uid' AND sub_use_status = 'Y'";
   $resultUpdate = mysqli_query($conn, $strSQL);
   if($resultUpdate){
-    echo "Y";
+    echo $strSQL;
+    die();
     $strSQL = "INSERT INTO udix2_log
                 (log_datetime, log_ip, log_info, log_msg, log_uid)
                VALUES

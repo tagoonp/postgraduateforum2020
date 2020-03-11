@@ -342,6 +342,8 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                 preload.show()
                 var jxr = $.post(wc_config.api + 'submission?stage=withdraw', param, function(){})
                            .always(function(resp){
+                             // console.log(resp);
+                             // return ;
                              if(resp == 'Y'){
                                setTimeout(function(){ window.location.reload() }, 2000)
                              }else{

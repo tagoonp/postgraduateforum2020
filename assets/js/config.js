@@ -4,6 +4,6 @@ var wc_config = {
   // domain: 'http://localhost/postgraduateforum2020/',
   // domain: 'https://postgraduateforum2020.com/',
   // api: 'https://postgraduateforum2020.com/controller/'
-  domain: 'https://fxplor.com/postgrad2020',
-  api: 'https://fxplor.com/postgrad2020/controller/'
+  domain: 'https://fxplor.com/postgraduateforum2020/',
+  api: 'https://fxplor.com/postgraduateforum2020/controller/'
 }
