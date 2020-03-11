@@ -302,7 +302,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
 
           setInterval(function(){
             submission.savedraft()
-          }, 3000)
+          }, 15000)
 
 
           $('#txtTitle').blur(function(){
