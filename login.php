@@ -16,6 +16,7 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
   <meta charset="utf-8">
   <title>Postgraduateforum 2020</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
   <meta content="<?php //echo get_configuration($conn, 'keywords', $language, $domain); ?>" name="keywords">
   <meta content="<?php //echo get_configuration($conn, 'description', $language, $domain); ?>" name="description">
 
@@ -283,6 +284,7 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
         preload.show()
         var jxr = $.post(wc_config.api + 'authenication?stage=login', param, function(){}, 'json')
                    .always(function(snap){
+                     console.log(snap);
                      if(fnc.json_exist(snap)){
                        snap.forEach(i=>{
                          if(i.status == 'Fail'){

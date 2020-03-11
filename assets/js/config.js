@@ -5,5 +5,5 @@ var wc_config = {
   // domain: 'https://postgraduateforum2020.com/',
   // api: 'https://postgraduateforum2020.com/controller/'
   domain: 'https://postgraduateforum2020.com/',
-  api: 'http://simanh.psu.ac.th/postgraduateforum2020/controller/'
+  api: 'https://healthsci.medicine.psu.ac.th/postgraduateforum2020/controller/'
 }
