@@ -342,8 +342,8 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                 preload.show()
                 var jxr = $.post(wc_config.api + 'submission?stage=withdraw', param, function(){})
                            .always(function(resp){
-                             // console.log(resp);
-                             // return ;
+                             console.log(resp);
+                             return ;
                              if(resp == 'Y'){
                                setTimeout(function(){ window.location.reload() }, 2000)
                              }else{
@@ -397,7 +397,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
       </div>
       <form class="withDrawForm" onsubmit="return false;">
         <div class="modal-body">
-          <div class="form-group dn">
+          <div class="form-group dn-">
             <label for="">Abstract ID : <span class="text-danger">*</span> </label>
             <input type="text" name="txtPid" id="txtPid" class="form-control">
           </div>
