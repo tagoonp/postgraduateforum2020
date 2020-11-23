@@ -34,8 +34,9 @@ if($stage == 'withdraw'){
              WHERE PID = '$pid' AND sub_uid = '$uid' AND sub_use_status = 'Y'";
   $resultUpdate = mysqli_query($conn, $strSQL);
   if($resultUpdate){
-    echo $strSQL;
-    die();
+    // echo $strSQL;
+    // die();
+    echo "Y";
     $strSQL = "INSERT INTO udix2_log
                 (log_datetime, log_ip, log_info, log_msg, log_uid)
                VALUES
@@ -179,15 +180,16 @@ if($stage == 'save_draft'){
 
   if($pid == NULL){
 
-    $ord = 1;
-    $strSQL = "SELECT MAX(PID) mx FROM udix2_submission WHERE sub_use_status = 'Y'";
-    $resultOrd = mysqli_query($conn, $strSQL);
-    if(($resultOrd) && (mysqli_num_rows($resultOrd) > 0)){
-      $dataOrd = mysqli_fetch_assoc($resultOrd);
-      $ord = $dataOrd['mx'] + 1;
-    }
+    // $ord = 1;
+    // $strSQL = "SELECT MAX(PID) mx FROM udix2_submission WHERE sub_use_status = 'Y'";
+    // $resultOrd = mysqli_query($conn, $strSQL);
+    // if(($resultOrd) && (mysqli_num_rows($resultOrd) > 0)){
+    //   $dataOrd = mysqli_fetch_assoc($resultOrd);
+    //   $ord = $dataOrd['mx'] + 1;
+    // }
 
-    $pid = $ord;
+    // $pid = $ord;
+    $pid = base64_encode($sysdateu).$uid;
     $strSQL = "INSERT INTO udix2_submission
               (PID, sub_title, sub_presenttype, sub_abstract, sub_keywords, sub_category, sub_udatetime, sub_uid)
               VALUES

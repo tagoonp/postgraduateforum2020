@@ -85,7 +85,8 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
   <section id="Home" class="wow fadeIn" style="margin-top: 40px;">
     <div class="hero-container">
       <video width="100%" controls autoplay muted id="mainVideo">
-        <source src="https://fxplor.com/media/upload/FullClip1Minwithsound.mp4" type="video/mp4">
+        <!-- <source src="https://fxplor.com/media/upload/FullClip1Minwithsound.mp4" type="video/mp4"> -->
+        <source src="https://medipe2.psu.ac.th/media/RevisedPromotion20201008.mov" type="video/mp4">
       </video>
     </div>
   </section><!-- #hero -->
@@ -98,8 +99,20 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
     <div class="container">
       <div class="section-title text-left mb-3">
 
-        <h1 class="text-center" style="font-size: 44px; font-weight: 600;">The 14<sup>th</sup> Postgraduate Forum <br>on Health Systems and Policy</h1>
-        <h2 class="text-center" style="font-size: 30px; font-weight: 600; margin-top: 20px; margin-bottom: 50px;">Research in the Era of Universal Health Coverage</h2>
+        <h1 class="text-center" style="font-size: 44px; font-weight: 600;">The 14<sup>th</sup>International Hybrid Conference Postgraduate Forum <br>on Health Systems and Policies</h1>
+        <h2 class="text-center" style="font-size: 30px; font-weight: 600; margin-top: 20px; margin-bottom: 20px;">Research in the Era of Universal Health Coverage During and After COVID-19 Pandemic</h2>
+
+
+        <div class="row">
+          <div class="col-12 col-sm-4">
+            <h3 class="text-center" style="margin-bottom: 30px;"><i>Combination of a "live" in-person event with a "virtual" online component</i></h3>
+          </div>
+          <div class="col-12 col-sm-8">
+            <div class="" style="font-size: 1.4em; border-width: 0px 0px 0px 2px; border-color: rgb(223, 223, 223); border: solid; padding-left: 20px; margin-top: 20px;">
+              Some local audiences and speakers in Thailand are in the conference room at PSU via a "live" in-person and those international audiences and speakers join via "online" component.
+            </div>
+          </div>
+        </div>
 
         <!-- <h2 class="th" style="color: #71c65d;">About</h2>
         <hr> -->
@@ -119,8 +132,8 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
         responsiveness, the responsibility of people on their health, and the financial burden across socioeconomic gradients. Data and research on the progress and achievement of universal health coverage
         around the world are crucial to health policy makers and researchers in order to monitor the
         situations of each country and explore the interventions to introduce in multi-stakeholder platforms.
-        Therefore, “Research in the Era of Universal Health Coverage” will be the theme for the 14th
-        Postgraduate Forum on Health Systems and Policies in 2020.
+        Therefore, “Research in the Era of Universal Health Coverage During and After COVID-19 Pandemic” will be the theme for the 14th
+        International Hybrid Conference Postgraduate Forum Forum on Health Systems and Policies in 2020.
         </p>
 
       </div>
@@ -145,7 +158,7 @@ at both national and international levels.</li>
     <div class="container">
       <div class="section-title text-left  mb-3">
         <h3 class="th">Date</h3>
-        <p>13-14 July 2020</p>
+        <p>22 - 23 December 2020</p>
       </div>
     </div>
 
@@ -188,19 +201,19 @@ University</p>
           <tbody>
             <tr>
               <td>Registration and abstract submission opening:</td>
-              <td>15 November 2019</td>
+              <td>15 August 2020</td>
             </tr>
             <tr>
               <td>Abstract Submission Deadline:</td>
-              <td>15 March 2020</td>
+              <td>30 September 2020</td>
             </tr>
             <tr>
               <td>Abstract Acceptance Notification: </td>
-              <td>15 April 2020</td>
+              <td>15 October 2020</td>
             </tr>
             <tr>
               <td>Registration Deadline: </td>
-              <td>31 May 2020</td>
+              <td>31 October 2020</td>
             </tr>
           </tbody>
         </table>
@@ -210,53 +223,11 @@ University</p>
     <div class="container">
       <div class="section-title text-left mb-3">
         <h3 class="th">Timetable</h3>
-          <table class="table table-striped-">
-            <tbody>
-              <tr style="background: rgb(235, 235, 235);">
-                <td colspan="2"><strong>13 July 2020</strong></td>
-              </tr>
-              <tr>
-                <td>     - Opening session</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>     - Keynote lecture</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>     - Plenary sessions</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>     - Symposium</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>     - Oral presentations</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>     - Welcome dinner</td>
-                <td></td>
-              </tr>
-
-              <tr style="background: rgb(235, 235, 235);">
-                <td colspan="2"><strong>14 July 2020</strong></td>
-              </tr>
-              <tr>
-                <td>     - Plenary sessions</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>     - Symposium</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>     - Oral presentations</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="row">
+          <div class="col-12 pt-2">
+          <button type="button" class="btn btn-success btn-lg" style="font-size: 1em;" onclick="window.open('./template/img/PGFschedule_22-23Dec2020_18Nov2020.pdf', target='_blank')">Click here for view full Schedule</button>
+          </div>
+        </div>
       </div>
 
       <div class="section-title text-left mb-3">
@@ -266,7 +237,7 @@ University</p>
               <tr>
                 <td style="width: 50%;">
                   <strong>Keynote lecture:</strong><br>
-                  Moving from evidence to policy: opportunities in the era of universal health coverage (UHC)
+                  Prioritizing policy research on Universal Health Coverage (UHC) and COVID-19
                 </td>
                 <td>
                   <div class="row">
@@ -287,18 +258,32 @@ University</p>
               <tr>
                 <td>•	Managing financial resources for UHC of NCDs in Malaysia</td>
                 <td>
-                  <strong>Prof Dato' Dr Syed Mohamed Aljunid</strong><br>
-                  International Centre for Casemix and Clinical Coding, Faculty of Medicine
-                  Universiti Kebangsaan Malaysia, Malaysia
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <img src="./template/img/syed.png" alt="" style="width: 70%;">
+                    </div>
+                    <div class="col-8 pt-1">
+                      <strong>Prof Dato' Dr Syed Mohamed Aljunid</strong><br>
+                      International Centre for Casemix and Clinical Coding, Faculty of Medicine
+                      Universiti Kebangsaan Malaysia, Malaysia
+                    </div>
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td>•	Public and private financing in achieving equitable UHC in Indonesia</td>
                 <td>
-                  <strong>Prof. Laksono Trisnantoro</strong><br>
-Health Policy & Management Department,
-Faculty of Medicine, Public Health, and Nursing,
-Gadjah Mada University, Indonesia
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <img src="./template/img/laksono.png" alt="" style="width: 70%;">
+                    </div>
+                    <div class="col-8 pt-1">
+                      <strong>Prof. Laksono Trisnantoro</strong><br>
+                      Health Policy & Management Department,
+                      Faculty of Medicine, Public Health, and Nursing,
+                      Gadjah Mada University, Indonesia
+                    </div>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -322,8 +307,15 @@ Gadjah Mada University, Indonesia
               <tr>
                 <td>•	Research needs for monitoring UHC advancement</td>
                 <td>
-                  <strong>Prof. Supasit Pannarunothai</strong><br>
-Centre for Health Equity Monitoring Foundation, Phitsanulok Thailand
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <img src="./template/img/supasit.png" alt="" style="width: 70%;">
+                    </div>
+                    <div class="col-8 pt-1">
+                      <strong>Prof. Supasit Pannarunothai</strong><br>
+                      Centre for Health Equity Monitoring Foundation, Phitsanulok Thailand
+                    </div>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -346,16 +338,30 @@ Centre for Health Equity Monitoring Foundation, Phitsanulok Thailand
               <tr>
                 <td>•	What is National Health Security Office (NHSO) needs from academic research?</td>
                 <td>
-                  <strong>Dr. Wirat Eungpoonsawat</strong><br>
-National Health Security Office (NHSO), region 12 Songkhla, Thailand
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <img src="./template/img/wirut.png" alt="" style="width: 70%;">
+                    </div>
+                    <div class="col-8 pt-1">
+                      <strong>Dr. Wirat Eungpoonsawat</strong><br>
+                      National Health Security Office (NHSO), region 12 Songkhla, Thailand
+                    </div>
+                  </div>
                 </td>
               </tr>
               <tr>
-                <td>•	What is academic ready to serve NSHO/UHC mission?</td>
+                <td>•	Policy research related to COVID-19</td>
                 <td>
-                  <strong>Prof. Virasakdi Chongsuvivatwong</strong><br>
-Epidemiology Unit, Faculty of Medicine,
-Prince of Songkla University, Thailand
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <img src="./template/img/virasakdi.png" alt="" style="width: 70%;">
+                    </div>
+                    <div class="col-8 pt-1">
+                      <strong>Prof. Virasakdi Chongsuvivatwong</strong><br>
+                      Epidemiology Unit, Faculty of Medicine,
+                      Prince of Songkla University, Thailand
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -394,7 +400,7 @@ Prince of Songkla University, Thailand
         </p>
         <p>
           <h4>Registration fee :</h4>
-           3,500 baht or 120 USD per person.
+           2,300 baht or 75 USD per person.
            <div class="text-muted" style="font-size: 0.8em;">
              <strong>Note:</strong> Send the registration fee via bank transfer to the bank account shown below. After the transfer,
 please attach the scanned receipt in the registration system.
@@ -414,7 +420,7 @@ please attach the scanned receipt in the registration system.
         </div>
         <h4>Remarks</h4>
         <ol>
-          <li>Registration fee includes coffee breaks, lunch and lecture materials.</li>
+          <!-- <li>Registration fee includes lecture materials and (coffee breaks and lunch for live in persons).</li> -->
           <li>Registration form without payment will NOT be processed.</li>
           <li>Please do NOT send cash.</li>
           <li>Congress Secretariat will send a letter of confirmation upon receipt of your registration
@@ -423,8 +429,8 @@ please attach the scanned receipt in the registration system.
           <li>
             Cancellation policy:
             <ul>
-              <li>Before 15 June 2020: Refund 50% of the registration fee.</li>
-              <li>After 30 June 2020: No refund.</li>
+              <li>Before 31 October 2020: Refund 50% of the registration fee.</li>
+              <li>After 31 October 2020: No refund.</li>
             </ul>
           </li>
           <li>The program is subject to change without prior notice. In the event of cancellation, the
@@ -464,15 +470,15 @@ please attach the scanned receipt in the registration system.
               The presenting author must be registered as a delegate to the conference after receiving notification
     for their abstract acceptance. The presenting author is responsible for all expenses incurred in the
     production of their presentations and for travel and accommodation during the conference. <u class="text-danger">Please
-    register as a delegate before 31 May 2020</u > to ensure that the abstract is published in the program
+    register as a delegate before 31 October 2020</u > to ensure that the abstract is published in the program
     book.
             </p>
 
             <h4>Presentations Guildline</h4>
             <p class="mb-1">
               <ul>
-                <li><a href="./template/img/Instruction_for_Oral_Presenters_2020.pdf" target="_blank">Instruction for Oral Presenters.</a></li>
-                <li><a href="./template/img/Instructions_for_Poster_Presenters_2020.pdf" target="_blank">Instruction for Poster Presenters.</a></li>
+                <li><a href="./template/img/InstructionforOralPresenters_2020_TP_SL-TL.pdf" target="_blank">Instruction for Oral Presenters.</a></li>
+                <li><a href="./template/img/InstructionsforPosterPresenters_2020_TP_SL-TL.pdf" target="_blank">Instruction for Poster Presenters.</a></li>
               </ul>
             </p>
 
@@ -565,7 +571,7 @@ Information concerning transportation to and from these hotels will be announced
         <h2 class="th" style="color: #71c65d;">Congress Secretariat:</h2>
         <hr>
         <p>
-          <strong>Tel:</strong> Local contact: 074-451165, 074-451166<br>
+          <strong>Tel:</strong> Local contact: 074-451165<br>
           <strong>International contact:</strong> +66 816981092<br>
           <strong>Email:</strong> bags.anyawadee@gmail.com
         </p>
@@ -573,6 +579,17 @@ Information concerning transportation to and from these hotels will be announced
       </div>
     </div>
   </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalPospone" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center p-5">
+          <h3 style="" class="text-danger">Due to the situation of COVID-19 outbreak, the 14th Postgraduate Forum on Health Systems and Policy: Research in the Era of Universal Health Coverage has been postponed to 2021. The re-scheduled date will be announced.</h3>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--==========================
     Footer
@@ -601,6 +618,7 @@ Information concerning transportation to and from these hotels will be announced
   <script type="text/javascript">
     $(document).ready(function(){
       // $('#mainVideo').play();
+      // $('#modalPospone').modal({backdrop: 'static', keyboard: false})
     })
   </script>
 

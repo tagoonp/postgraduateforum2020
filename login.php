@@ -92,7 +92,7 @@ if((isset($_GET['lang'])) && ($_GET['lang'] != '')){
                       </div>
                       <div class="form-group">
                         <button type="submit" class="btn btn-success">Sign in</button>
-                        <a href="#" style="font-size: 0.8em; margin-top: 13px;" class="float-right">Forget password?</a>
+                        <a href="forgetpassword" style="font-size: 0.8em; margin-top: 13px;" class="float-right">Forget password?</a>
                       </div>
 
                       <div class="p-2 mb-2 text-danger" style="background-: rgb(244, 244, 244); font-size: 0.8em;">

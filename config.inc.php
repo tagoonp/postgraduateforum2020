@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Bangkok");
 
 // define( 'DB_NAME', 'postgraduateforum2020' );
 // define( 'DB_USER', 'pgf2020u' );
-// define( 'DB_PASSWORD', 'mandymorenn' );
+// define( 'DB_PASSWORD', 'bHj%82u5' );
 // define( 'DB_HOST', 'localhost' );
 // define( 'TB_PREFIX', 'udix2_' );
 // define( 'ROOT_DOMAIN', 'https://postgraduateform2020.com/' );
@@ -18,9 +18,16 @@ date_default_timezone_set("Asia/Bangkok");
 // define( 'TB_PREFIX', 'udix2_' );
 // define( 'ROOT_DOMAIN', 'https://postgraduateform2020.com/' );
 
+// define( 'DB_NAME', 'postgraduateforum2020' );
+// define( 'DB_USER', 'root' );
+// define( 'DB_PASSWORD', 'aeHea41th#Sci' );
+// define( 'DB_HOST', 'localhost' );
+// define( 'TB_PREFIX', 'udix2_' );
+// define( 'ROOT_DOMAIN', 'https://postgraduateform2020.com/' );
+
 define( 'DB_NAME', 'postgraduateforum2020' );
 define( 'DB_USER', 'root' );
-define( 'DB_PASSWORD', 'aeHea41th#Sci' );
+define( 'DB_PASSWORD', 'mandymorenn' );
 define( 'DB_HOST', 'localhost' );
 define( 'TB_PREFIX', 'udix2_' );
 define( 'ROOT_DOMAIN', 'https://postgraduateform2020.com/' );

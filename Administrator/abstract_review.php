@@ -47,6 +47,10 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
         <link href="https://fonts.googleapis.com/css?family=Kanit:300,400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../assets/css/style-custom.css">
+
+        <!-- <script type="text/javascript" src="../node_modules/jspdf.umd.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+
         <style media="screen">
           .dn{ display: none; }
         </style>
@@ -279,12 +283,14 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
     <script type="text/javascript" src="../node_modules/ckeditor_lite/ckeditor.js"></script>
     <script type="text/javascript" src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
 
+
     <script src="../assets/js/config.js?token=<?php echo $sysdateu; ?>"></script>
     <script src="../assets/js/core.js?token=<?php echo $sysdateu; ?>"></script>
     <script src="../assets/js/authentication.js?token=<?php echo $sysdateu; ?>"></script>
     <!-- <script src="../assets/js/submission.js?token=<?php echo $sysdateu; ?>"></script> -->
 
     <script>
+      var doc = new jsPDF();
       var abstract = null
 
         $(document).ready(function(){
@@ -365,8 +371,25 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
         }
 
         function printAsFile2(){
-          var printData = $('#printArea').html()
-          PopUp(printData)
+          // var printData = $('#printArea').html()
+          // PopUp(printData)
+
+          var printContents = document.getElementById("printArea").innerHTML;
+          var originalContents = document.body.innerHTML;
+          document.body.innerHTML = printContents;
+
+          window.print();
+          document.body.innerHTML = originalContents;
+
+          // var w = window.open();
+          // w.document.write($('#printArea').html());
+          // w.print();
+          // w.close();
+
+
+          // doc.fromHTML(printData);
+          // doc.save('div.pdf');
+
         }
 
         function PopUp(data) {
@@ -382,7 +405,7 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
                             '<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">' +
                             '<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" >' +
                             '<link rel="stylesheet" href="../assets/css/style.css">' +
-                            '<link rel="stylesheet" href="../assets/custom/css/style.css">' +
+                            // '<link rel="stylesheet" href="../assets/custom/css/style.css">' +
                             '<style media="screen">' +
                             'body {font-size: 16px !important; padding-left: 40px; padding-right: 40px;}' +
                             'img {' +
@@ -391,9 +414,11 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
                             '</style>' +
                           '</head>' +
                           '<body style="font-size: 16px !important; padding-left: 40px; padding-right: 40px;">' + data + '</body></html>'
-
+          // doc.fromHTML(printData);
+          // doc.save('div.pdf');
+          // return ;
           mywindow.document.write(printData);
-          mywindow.document.close(); // necessary for IE >= 10 and necessary before onload for chrome
+          // mywindow.document.close(); // necessary for IE >= 10 and necessary before onload for chrome
 
 
           if (is_chrome) {
@@ -404,9 +429,22 @@ if(($resultSubmistion) && (mysqli_num_rows($resultSubmistion) > 0)){
                   mywindow.close();// change window to mywindow
                   isPrinting = false;
               };
-              setTimeout(function () { if(!isPrinting){mywindow.print();mywindow.close();} }, 300);
+              setTimeout(function () {
+                if(!isPrinting){
+                  mywindow.print();
+                  mywindow.close();
+                  // console.log(printData);
+
+                  // doc.fromHTML(printData);
+                  // doc.save('div.pdf');
+
+                } else{
+                  // alert('asd')
+                }
+              }, 300);
           }
           else {
+            alert('not chrome')
               mywindow.document.close(); // necessary for IE >= 10
               mywindow.focus(); // necessary for IE >= 10
               mywindow.print();

@@ -214,6 +214,10 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
                                 </select>
                               </div>
 
+                              <div class="text-center pb-3">
+                                ** If there are any issue or can not submit, please follow the step for clear brwoser cache. >> <a href="https://www.getfilecloud.com/blog/2015/03/tech-tip-how-to-do-hard-refresh-in-browsers/#.Xmmef5P7TOT" target="_blank" class="text-primary">How to clear browser cache</a> If this still not working, please send your abstract to our staff via email.
+                              </div>
+
                               <div class="form-group text-center">
                                 <button type="reset" class="btn btn-primary- bsdn btn-lg">Reset form</button>
                                 <button type="submit" class="btn btn-primary bsdn btn-lg">Submit</button>
@@ -302,7 +306,7 @@ $uid = mysqli_real_escape_string($conn, $_GET['uid']);
 
           setInterval(function(){
             submission.savedraft()
-          }, 15000)
+          }, 3000)
 
 
           $('#txtTitle').blur(function(){

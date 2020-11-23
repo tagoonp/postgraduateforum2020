@@ -15,6 +15,40 @@ if(
 $return = array();
 $stage = mysqli_real_escape_string($conn, $_GET['stage']);
 
+if($stage == 'check_password'){
+  if(
+    (!isset($_POST['username']))
+  ){
+    mysqli_close($conn);
+    die();
+  }
+
+  $username = mysqli_real_escape_string($conn, $_POST['username']);
+  $strSQL = "SELECT * FROM udix2_account WHERE username = '$username' AND delete_status = 'N' AND activate_status = 'Y' AND use_status = 'Y' LIMIT 1";
+  $resultCheck = mysqli_query($conn, $strSQL);
+  if(($resultCheck) && (mysqli_num_rows($resultCheck) > 0)){
+    while($row = mysqli_fetch_array($resultCheck)){
+        $b = array();
+        foreach ($row as $key => $value) {
+          if(!is_int($key)){
+            if($key == 'password'){
+              $b['pwd'] = base64_decode($value);
+            }else{
+              $b[$key] = $value;
+            }
+
+          }
+        }
+        $b['status'] = 'Y';
+        $return[] = $b;
+    }
+  }
+
+  echo json_encode($return);
+  mysqli_close($conn);
+  die();
+}
+
 if($stage == 'info'){
   if(
     (!isset($_POST['uid'])) ||
